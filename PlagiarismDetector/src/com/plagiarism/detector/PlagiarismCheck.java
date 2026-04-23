@@ -10,12 +10,38 @@ public class PlagiarismCheck {
     
     // Common patterns found in AI-generated text
     private static final String[] AI_PATTERNS = {
-        "however", "therefore", "furthermore", "moreover", "consequently",
-        "in conclusion", "it is important to note", "one could argue",
-        "in summary", "as previously mentioned", "as discussed earlier",
-        "the above points", "in light of", "with regard to"
-    };
-    
+    // Logical connectors
+    "however", "therefore", "furthermore", "moreover", "consequently",
+    "thus", "hence", "accordingly", "nevertheless", "nonetheless",
+
+    // Structured phrases
+    "in conclusion", "in summary", "to summarize", "overall",
+    "in light of", "with regard to", "in terms of",
+    "it is important to note", "it is worth mentioning",
+    "one could argue", "this suggests that",
+    "it can be observed that", "this indicates that",
+
+    // Academic/formal tone
+    "the aforementioned", "as previously mentioned",
+    "as discussed earlier", "the above points",
+    "from this perspective", "in this context",
+    "a key factor is", "an important aspect is",
+
+    // Balanced/neutral framing
+    "on the other hand", "on one hand",
+    "while it is true that", "although it may seem",
+    "this highlights the importance of",
+
+    // Generic explanation style
+    "this can be understood as", "this refers to",
+    "this is because", "this occurs when",
+    "it is generally accepted that",
+
+    // AI-style redundancy patterns
+    "overall, it can be said that",
+    "in many cases", "in most cases",
+    "a key factor is", "an important aspect is"
+};
     private static final String[] HUMAN_PATTERNS = {
         "um", "uh", "like", "you know", "i mean", "actually", "basically",
         "honestly", "literally", "seriously", "anyway", "so anyway"
@@ -61,7 +87,7 @@ public class PlagiarismCheck {
         } else if (aiScore >= 0.5) {
             result.setVerdict("POSSIBLY AI-GENERATED");
         } else if (aiScore >= 0.3) {
-            result.setVerdict("LIKELY HUMAN-WRITTEN");
+            result.setVerdict("LIKELY AI-GENERATED");
         } else {
             result.setVerdict("HIGHLY LIKELY HUMAN-WRITTEN");
         }
