@@ -569,7 +569,7 @@ public class MainFrame extends JFrame {
     
     private void displayResults(AnalysisResult result) {
         int aiProb = (int) (result.getAiProbability() * 100);
-        int humanProb = (int) (result.getHumanProbability() * 100);
+        int humanProb = (int) (result.getHumanProbability() * 50);
         
         // Set verdict with clear, simple text
         String verdict = result.getVerdict();
